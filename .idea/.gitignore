@@ -1,0 +1,7 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/bot-env
+/venv
+info.py
+/__pycache__
