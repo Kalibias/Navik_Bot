@@ -49,8 +49,7 @@ maj_dict = {
 
 }
 
-bad_beans = ["Piss",
-             "Barf",
+bad_beans = ["Barf",
              "Toothpaste",
              "Booger",
              "Rotten Egg",
@@ -58,7 +57,6 @@ bad_beans = ["Piss",
              "Black Pepper",
              "Skunk Spray",
              "Moldy Cheese",
-             "Willow's Coochie",
              "Motor Oil",
              "Dried Blood",
              "Ear Wax",
@@ -74,7 +72,7 @@ bad_beans = ["Piss",
              "Old Bandage",
              "Liver & Onion",
              "Evil Coconut",
-             "Benry",
+             "Benry"
              ]
 
 good_beans = ["Water Gate Salad", "Cream Cheese", "Lemon", "Peach", "Berry Blue", "Juicy Pear", "Buttered Popcorn",
