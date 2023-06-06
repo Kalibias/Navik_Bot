@@ -5,8 +5,6 @@ from info import token
 from secret import issa_secret
 import discord
 
-nexhi_reactions = ["wh-", ",", ".", "i-", "...", ":D", "HELLO?"]
-illegal_works = ["Skinwalker", "skin walker", "skinwalker"]
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='.', intents=intents)
@@ -29,11 +27,13 @@ async def commands(ctx):
 
 @bot.command()
 async def tarot(ctx, arg):
-    if not int(arg) > 5:
-        for i in range(int(arg)):
-            await ctx.channel.send(f"For {ctx.message.author.display_name}\n{bot_feats.tarot_draw()}")
-        print(f"Command Activated for {ctx.message.author} in {ctx.message.guild}")
-    await ctx.channel.send("Please do ( 1 - 5 )")
+    # Doubles to prevent users to summon more than 7 cards at once. Text Limit.
+    rolls = re.search(r"[0-6]", arg, re.IGNORECASE)
+    print(arg)
+    if rolls is not None:
+        await ctx.channel.send(f"For {ctx.message.author.display_name}\n{tarot_roll(int(arg))}")
+    elif rolls is None:
+        await ctx.channel.send("please enter a number up to 6.")
 
 
 @bot.command()
@@ -47,14 +47,10 @@ async def joke(ctx):
     await ctx.channel.send(f"For {ctx.message.author.display_name}\n{send_joke()}")
     print(f"Command Activated for {ctx.message.author} in {ctx.message.guild}")
 
-@bot.command()
 async def roll(ctx, arg):
-    dice = re.search(r"(\d+)d(\d+)", arg)
-    if dice is None:
-        await ctx.channel.send("Try 1d20")
-    else:
-        await ctx.channel.send(dice_roll(arg))
+    await ctx.channel.send(dice_roll(arg))
     print(f"Command Activated for {ctx.message.author} in {ctx.message.guild}")
+
 
 
 bot.run(token)
